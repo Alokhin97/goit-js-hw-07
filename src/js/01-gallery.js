@@ -1,12 +1,11 @@
 import { galleryItems } from "./gallery-items.js";
-// Change code below this line
 console.log(galleryItems);
-const gallery = document.querySelector(".gallery");
-galleryLink.forEach((link) => {
-  link.addEventListener("click", (event) => {
-    event.preventDefault();
-  });
-});
+// Change code below this line
+const refs = {
+  galleryList: document.querySelector("div.gallery"),
+  lightbox: document.querySelector(".lightbox"),
+  btn: document.querySelector('[data-action="close-lightbox"]'),
+};
 const createImage = (item, parent) => {
   const { preview, original, description } = item;
   const img = document.createElement("img");
@@ -43,18 +42,7 @@ const createItem = (item) => {
 const renderListItems = (arr) => {
   const items = arr.map((item) => createItem(item));
 
-  gallery.append(...items);
+  refs.galleryList.append(...items);
 };
-renderListItems(images);
-import * as basicLightbox from "basiclightbox";
 
-const instance = basicLightbox.create(`
-    <div class="modal">
-        <p>
-            Your first lightbox with just a few lines of code.
-            Yes, it's really that simple.
-        </p>
-    </div>
-`);
-
-instance.show();
+renderListItems(galleryItems);
