@@ -66,3 +66,4 @@ const onGalleryClick = (event) => {
   );
   instance.show();
 };
+galleryList.addEventListener("click", onGalleryClick);

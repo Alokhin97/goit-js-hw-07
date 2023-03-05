@@ -34,6 +34,4 @@ const renderListItems = (arr) => {
 };
 
 renderListItems(galleryItems);
-var lightbox = new SimpleLightbox(".gallery a", {
-  /* options */
-});
+var lightbox = new SimpleLightbox(".gallery a", {});
