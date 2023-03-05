@@ -30,8 +30,8 @@ const renderListItems = (arr) => {
 };
 
 renderListItems(galleryItems);
-var lightbox = new SimpleLightbox(".gallery a", {
-  captionType: ,
-  captionData: ,
+const lightbox = new SimpleLightbox(".gallery a", {
+  captionsData: "alt",
   captionDelay: 250,
+  scrollZoom: false,
 });
