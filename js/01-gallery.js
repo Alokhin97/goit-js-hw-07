@@ -1,11 +1,7 @@
 import { galleryItems } from "./gallery-items.js";
 console.log(galleryItems);
 // Change code below this line
-const refs = {
-  galleryList: document.querySelector("div.gallery"),
-  lightbox: document.querySelector(".lightbox"),
-  btn: document.querySelector('[data-action="close-lightbox"]'),
-};
+const galleryList = document.querySelector("div.gallery");
 const createImage = (item, parent) => {
   const { preview, original, description } = item;
   const img = document.createElement("img");
@@ -42,7 +38,31 @@ const createItem = (item) => {
 const renderListItems = (arr) => {
   const items = arr.map((item) => createItem(item));
 
-  refs.galleryList.append(...items);
+  galleryList.append(...items);
 };
 
 renderListItems(galleryItems);
+
+const onGalleryClick = (event) => {
+  event.preventDefault();
+  if (event.targen.nodeName !== "IMG") {
+    return;
+  }
+  const closeModal = (event) => {
+    if (event.code === "Escape") {
+      instance.close();
+    }
+  };
+  const instance = basicLightbox.create(
+    `<img src="${event.target.dataset.source}" width="800" height="600">`,
+    {
+      onShow: (instance) => {
+        window.addEventListener("keydown", closeModal);
+      },
+      onClose: (instance) => {
+        window.removeEventListener("keydown", closeModal);
+      },
+    }
+  );
+  instance.show();
+};
