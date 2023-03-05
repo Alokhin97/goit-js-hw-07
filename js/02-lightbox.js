@@ -1,11 +1,7 @@
 import { galleryItems } from "./gallery-items.js";
 // Change code below this line
 console.log(galleryItems);
-const refs = {
-  galleryList: document.querySelector("ul.gallery"),
-  lightbox: document.querySelector(".lightbox"),
-  btn: document.querySelector('[data-action="close-lightbox"]'),
-};
+const galleryList = document.querySelector("ul.gallery");
 const createImage = (item, parent) => {
   const { preview, original, description } = item;
   const img = document.createElement("img");
@@ -30,8 +26,11 @@ const createItem = (item) => {
 const renderListItems = (arr) => {
   const items = arr.map((item) => createItem(item));
 
-  refs.galleryList.append(...items);
+  galleryList.append(...items);
 };
 
 renderListItems(galleryItems);
-var lightbox = new SimpleLightbox(".gallery a", {});
+var lightbox = new SimpleLightbox(".gallery a", {
+  captionType: "alt",
+  captionDelay: 250,
+});

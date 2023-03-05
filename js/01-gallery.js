@@ -45,7 +45,7 @@ renderListItems(galleryItems);
 
 const onGalleryClick = (event) => {
   event.preventDefault();
-  if (event.targen.nodeName !== "IMG") {
+  if (event.target.nodeName !== "IMG") {
     return;
   }
   const closeModal = (event) => {
